@@ -1,0 +1,49 @@
+[
+  {
+    "prompt_inputs": {
+      "height": "180 cm",
+      "weight": "70 kg",
+      "goal": "Marathon training - maximize carbohydrate loading and sustained energy for long-distance running",
+      "restrictions": "None"
+    },
+    "solution_criteria": [
+      "Meal plan covers all meals for one complete day (breakfast, lunch, dinner, snacks)",
+      "Emphasizes high carbohydrate content (60-70% of daily calories) to support marathon endurance",
+      "Includes sustained energy sources and timing appropriate for a marathon runner's training schedule",
+      "Format is compact and concise (suitable for quick reference)"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a high-endurance athlete (marathon runner) requiring maximum carbohydrate loading and sustained energy intake throughout the day"
+  },
+  {
+    "prompt_inputs": {
+      "height": "178 cm",
+      "weight": "85 kg",
+      "goal": "Maximize strength and power gains with high protein intake and optimal meal timing around weightlifting training",
+      "restrictions": "None"
+    },
+    "solution_criteria": [
+      "Meal plan spans exactly 1 day with 4-5 meals distributed throughout the day",
+      "Minimum 1.8g protein per kg bodyweight (153g total daily protein) with even distribution across meals",
+      "Includes a substantial meal 2-3 hours before training and a protein-rich meal within 1 hour post-training",
+      "Compact format with meal names, approximate macros, and key foods listed concisely"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a strength/power athlete (weightlifter) needing high protein distribution and strategic meal timing around training sessions"
+  },
+  {
+    "prompt_inputs": {
+      "height": "183 cm",
+      "weight": "78 kg",
+      "goal": "Optimize performance and recovery for morning and evening soccer matches with quick refueling between sessions",
+      "restrictions": "Vegetarian, no nuts"
+    },
+    "solution_criteria": [
+      "Meal plan covers all three meals plus 2-3 snacks/recovery meals timed appropriately between morning and evening matches",
+      "Includes adequate protein and carbohydrates for match performance and muscle recovery",
+      "All meals and snacks respect vegetarian and nut-free restrictions"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a sport with multiple daily sessions (soccer player with morning and evening matches) requiring recovery meals and quick refueling between events"
+  }
+]

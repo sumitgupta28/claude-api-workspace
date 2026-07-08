@@ -172,4 +172,6 @@ with open("./report.md", "r") as f:
     text = f.read()    
 
 chunks = chunk_by_section(text)
-print("chunks: ", len(chunks))    
+print("chunks: ", len(chunks))  
+
+

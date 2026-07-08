@@ -113,7 +113,7 @@ def local_pdf_vectorless_rag(pdf_path: str, query: str, model_name: str = "llama
 # --- Execution Example ---
 if __name__ == "__main__":
     # Replace with the name of your local PDF file placed in the same directory
-    MY_PDF = "462760_Sumit_Kumar_Gupta_Profile.pdf" 
+    MY_PDF = "462760_Sumit_Kumar_Gupta_Profile_v1.pdf" 
     QUESTION = "what's sumit's education and work experience?"
     
     # Run pipeline entirely on your local machine

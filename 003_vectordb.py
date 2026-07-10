@@ -1,12 +1,15 @@
 # Client Setup
+from dotenv import load_dotenv
 import voyageai
 # Chunk by section
 import re
+import os
 
 # VectorIndex implementation
 import math
 from typing import Optional, Any, List, Dict, Tuple
 
+load_dotenv()
 
 client = voyageai.Client()
 
@@ -18,11 +21,18 @@ def chunk_by_section(document_text):
 
 # Embedding Generation
 def generate_embedding(chunks, model="voyage-3-large", input_type="query"):
-    is_list = isinstance(chunks, list)
-    input = chunks if is_list else [chunks]
-    result = client.embed(input, model=model, input_type=input_type)
-    return result.embeddings if is_list else result.embeddings[0]
 
+    try:
+
+        is_list = isinstance(chunks, list)
+        input = chunks if is_list else [chunks]
+        result = client.embed(input, model=model, input_type=input_type)
+        return result.embeddings if is_list else result.embeddings[0]
+    except Exception as e:
+        print(f"Error generating embedding: {e}")
+        raise
+    finally:
+        pass
 
 
 class VectorIndex:
@@ -175,3 +185,25 @@ chunks = chunk_by_section(text)
 print("chunks: ", len(chunks))  
 
 
+
+# 1. Chunk the text by section
+# 2. Generate embeddings for each chunk
+
+embeddings = generate_embedding(chunks, model="voyage-3-large", input_type="query")
+
+
+# 3. Create a vector store and add each embedding to it
+# Note: converted to a bulk operation to avoid rate limiting errors from VoyageAI
+store = VectorIndex()
+for embedding, chunk in zip(embeddings, chunks):
+    store.add_vector(vector=embedding, document={"content": chunk})
+
+# 4. Some time later, a user will ask a question. Generate an embedding for it
+user_question = "give me details for INC-2023-Q4-011?"
+question_embedding = generate_embedding(user_question)
+# 5. Search the store with the embedding, find the 2 most relevant chunks
+
+results = store.search(question_embedding, k=2)
+
+for doc, distance in results:
+    print(f"Distance: {distance:.4f}, \n Content: {doc['content'][0:100]}...")  # Print first 100 chars of content  
